@@ -241,6 +241,8 @@ module SendGridActionMailer
       end
       if mail['ip_pool_name']
         sendgrid_mail.ip_pool_name = mail['ip_pool_name'].to_s
+      elsif ENV.has_key?('DEFAULT_SENDGRID_IP_POOL')
+        sendgrid_mail.ip_pool_name = ENV['DEFAULT_SENDGRID_IP_POOL']
       end
     end
 
